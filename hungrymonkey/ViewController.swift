@@ -38,6 +38,31 @@ class ViewController: UIViewController {
         
     }
 
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            let location = touch.locationInView(self.view)
+            
+            if imageView.frame.contains(location) {
+                imageView.center = location
+            }
+        }
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            let location = touch.locationInView(self.view)
+            
+            if imageView.frame.contains(location) {
+                imageView.center = location
+            }
+        }
+
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        imageView.center = self.view.center
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

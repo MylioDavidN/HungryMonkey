@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var background: UIView!
     
+    var monkeyLocation = CGPoint(x: 100, y: 150)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +45,11 @@ class ViewController: UIViewController {
             let location = touch.locationInView(self.view)
             
             if imageView.frame.contains(location) {
-                imageView.center = location
+                // move monkey only along the x axis
+                monkeyLocation.x = location.x
+                monkeyLocation.y = 150
+                
+                imageView.center = monkeyLocation
             }
         }
     }
@@ -53,14 +59,19 @@ class ViewController: UIViewController {
             let location = touch.locationInView(self.view)
             
             if imageView.frame.contains(location) {
-                imageView.center = location
+                // move monkey only along the x axis
+                monkeyLocation.x = location.x
+                monkeyLocation.y = 150
+                    
+                imageView.center = monkeyLocation
+                
             }
         }
 
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        imageView.center = self.view.center
+        imageView.center = monkeyLocation
     }
     
     override func didReceiveMemoryWarning() {
